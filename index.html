@@ -3,18 +3,21 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>r/India Data</title>
+        <title>Subreddit Data</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     </head>
     <body>
         <div class="container">
             <center>
+                <div class="column is-2">
+                    <input id="subreddit" class="input is-danger" type="text" placeholder="type r/..">
+                </div>
                 <button id="btn" class="button is-warning is-large">
-                    Scrutinize r/India Posts
+                    Scrutinize Subreddit Posts
                 </button>
             </center>
-
-            <div id="postlist" class="list is-hoverable">
+            
+            <div id="rLists" class="list">
             </div>
         </div>
 
