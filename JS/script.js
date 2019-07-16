@@ -1,15 +1,15 @@
+var subreddit = document.querySelector("#subreddit");
 var btn = document.getElementById("btn");
-var list = document.querySelector("#postlist");
-var gotData = false;
+var subRList = document.querySelector("#rLists");
 
 btn.addEventListener("click" , function() 
 {
-    if(gotData)
-    {
-        console.log("No more data to fetch");
-        return ;
-    }
-    var url = "https://www.reddit.com/r/india/" + ".json";
+    var newSubR = document.createElement("h1");
+    newSubR.className = "list-item title has-text-success";
+    newSubR.innerHTML = "from " + subreddit.value + " :";
+    subRList.appendChild(newSubR);
+
+    var url = "https://www.reddit.com/" + subreddit.value + ".json";
     var get = new XMLHttpRequest();
     get.open("GET" , url);
     get.onload = function() 
@@ -25,13 +25,14 @@ btn.addEventListener("click" , function()
 
 function dispRandom(data)
 {
-    var posts = data["data"]["children"];
+    var list = document.createElement("div");
+    list.className = "list is-hoverable";
 
+    var posts = data["data"]["children"];
     for(var i=0 ; i<posts.length ; i++)
     {
         var curpost = posts[i]["data"];
         var postLink = curpost["url"]
-        console.log(curpost);
 
         var nextPost = document.createElement("div");
         nextPost.className = "list-item";
@@ -52,7 +53,7 @@ function dispRandom(data)
 
         list.appendChild(nextPost);
     }
-    gotData = true;
+    subRList.appendChild(list);
 }
 
 function unixTimeConverter(unixTime)
