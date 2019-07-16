@@ -1,0 +1,18 @@
+*
+{
+    padding: 0px;
+    margin: 0px;
+}
+
+body
+{
+    height: 110vh;
+    background-color: coral;
+    background-size: cover;
+}
+
+#rLists
+{
+    height: 97vh;
+    overflow-y: scroll;
+}
