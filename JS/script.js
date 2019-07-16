@@ -20,6 +20,7 @@ btn.addEventListener("click" , function()
 
 function dispRandom(data)
 {
+    console.log(data);
     var newSubR = document.createElement("h1");
     newSubR.className = "list-item title has-text-success";
     newSubR.innerHTML = "from " + subreddit.value + " :";
@@ -29,6 +30,7 @@ function dispRandom(data)
     list.className = "list is-hoverable";
 
     var posts = data["data"]["children"];
+
     for(var i=0 ; i<posts.length ; i++)
     {
         var curpost = posts[i]["data"];
@@ -45,15 +47,15 @@ function dispRandom(data)
         
         var basicInfo = document.createElement("p");
         var str = "Created : " + unixTimeConverter(curpost["created"]) + "<br>";
-        str += "Type : " + (curpost["link_flair_css_class"] || "Miscellaneous") + "<br>";
-        str += "Description : " + (curpost["title"] || "None") + "<br>";
+        str += "Type : " + (curpost["link_flair_text"] || "Miscellaneous") + "<br>";
+        str += "Description : <b>" + (curpost["title"] || "None") + "</b><br>";
         str += "Upvotes : " + curpost["score"] + "<br>";
+        str += "Comments : " + curpost["num_comments"] + "<br>";
         basicInfo.innerHTML = str;
         nextPost.appendChild(basicInfo);
 
         list.appendChild(nextPost);
     }
-    console.log(posts);
     subRList.appendChild(list);
 }
 
