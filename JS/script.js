@@ -4,11 +4,6 @@ var subRList = document.querySelector("#rLists");
 
 btn.addEventListener("click" , function() 
 {
-    var newSubR = document.createElement("h1");
-    newSubR.className = "list-item title has-text-success";
-    newSubR.innerHTML = "from " + subreddit.value + " :";
-    subRList.appendChild(newSubR);
-
     var url = "https://www.reddit.com/" + subreddit.value + ".json";
     var get = new XMLHttpRequest();
     get.open("GET" , url);
@@ -25,6 +20,11 @@ btn.addEventListener("click" , function()
 
 function dispRandom(data)
 {
+    var newSubR = document.createElement("h1");
+    newSubR.className = "list-item title has-text-success";
+    newSubR.innerHTML = "from " + subreddit.value + " :";
+    subRList.appendChild(newSubR);
+
     var list = document.createElement("div");
     list.className = "list is-hoverable";
 
@@ -53,6 +53,7 @@ function dispRandom(data)
 
         list.appendChild(nextPost);
     }
+    console.log(posts);
     subRList.appendChild(list);
 }
 
