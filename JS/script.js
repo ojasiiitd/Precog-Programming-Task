@@ -42,7 +42,7 @@ function dispRandom(data)
         var link = document.createElement("a");
         link.className = "is-size-4";
         link["href"] = postLink;
-        link.innerHTML = "Post #" + (i+1) + " by : r/" + curpost["author"];
+        link.innerHTML = "Post #" + (i+1) + " by : u/" + curpost["author"];
         nextPost.appendChild(link);
         
         var basicInfo = document.createElement("p");
